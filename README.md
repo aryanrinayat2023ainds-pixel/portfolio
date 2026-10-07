@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Aryan Rinayat — Portfolio
 
-## Getting Started
+Personal portfolio of Aryan Rinayat, Artificial Intelligence & Data Science student at MMCOE, Pune.
 
-First, run the development server:
+Built with **Next.js 16 (App Router) · TypeScript · Tailwind CSS v4**, deployed on **Vercel**. Every page is statically prerendered; the only client-side JavaScript is for the nav, theme toggle, command menu (Ctrl/⌘ K), the live k-means demo, the GitHub repo list and the contact form.
+
+## Updating content
+
+Almost everything lives in **`lib/site.ts`**:
+
+| To change… | Edit |
+| --- | --- |
+| Headline, intro, about text, interests | `hero`, `about` |
+| Education (add dates, notes) | `education` |
+| Projects | `projects` — add entries; the Projects cards appear automatically |
+| Internships / clubs / volunteering | `experience` — section + nav link appear when non-empty |
+| Certifications, hackathons, awards | `achievements` — same |
+| Skills | `skills` — same (only list what you can discuss in an interview) |
+| Email / links | `site` |
+
+**Resume:** put your PDF at `public/resume.pdf`. The "Download Resume" button and command-menu action appear automatically on the next deploy.
+
+**GitHub repos** are fetched live from `github.com/Aryanrinayat`, so new public repositories show up without editing anything.
+
+**Writing:** essays live in `lib/essays/` with a page under `app/writing/<slug>/`.
+
+## Contact form
+
+The form posts to [FormSubmit](https://formsubmit.co) and delivers to the email in `site.email`. The **first** submission triggers a one-time activation email to that inbox — click the link in it and every later message is delivered.
+
+## Develop & deploy
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Pushing to `main` redeploys automatically if the Vercel project is connected to this GitHub repo (Vercel → Project → Settings → Git). Otherwise run `npx vercel --prod` from this folder.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Set `NEXT_PUBLIC_SITE_URL` in Vercel if you add a custom domain, so canonical URLs and social previews use it.
