@@ -49,6 +49,7 @@ export const about = {
     { label: "College", value: "MMCOE, Pune" },
     { label: "Year", value: "Third year" },
     { label: "Based in", value: "Pune, India" },
+    { label: "Student body", value: "AESA, MMCOE — Marketing (2024–25)" },
     { label: "Open to", value: "Internships · Hackathons · Collaborations" },
   ],
   interests: [
@@ -142,7 +143,20 @@ export type Experience = {
 };
 
 /** Internships, volunteering, clubs, leadership. Leave empty to hide the section. */
-export const experience: Experience[] = [];
+export const experience: Experience[] = [
+  {
+    // Source: https://mmcoe.edu.in/departments/ai-ds/professional-associations/students-association/
+    organization: "AESA — AI & Data Science Engineering Student Association, MMCOE",
+    role: "Marketing, Activity Planner Committee",
+    period: "2024 – 25 · Second year",
+    location: "Pune",
+    points: [
+      "Served in the Marketing role on AESA's Activity Planner committee — the department association that brings AI & DS students together through workshops, hackathons and industry exposure.",
+      "Responsible for marketing the committee's events to fellow students.",
+    ],
+    skills: ["Event marketing", "Teamwork", "Student leadership"],
+  },
+];
 
 export type Achievement = {
   title: string;
