@@ -67,8 +67,9 @@ export function Header({ base = "" }: { base?: string }) {
       }`}
     >
       <nav aria-label="Primary" className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
-        <Link href={`${base}#home`} aria-label="Aryan Rinayat — home" onClick={() => setOpen(false)}>
+        <Link href={`${base}#home`} onClick={() => setOpen(false)}>
           <Logo />
+          <span className="sr-only"> — home</span>
         </Link>
 
         <ul className="hidden items-center gap-1 lg:flex">
@@ -95,9 +96,9 @@ export function Header({ base = "" }: { base?: string }) {
             type="button"
             onClick={openPalette}
             className="hidden items-center gap-2 rounded-full border border-line px-3 py-1.5 text-xs text-ink-3 transition-colors hover:border-line-strong hover:text-ink sm:inline-flex"
-            aria-label="Open command menu"
           >
             <Search width={14} height={14} />
+            <span className="sr-only">Open command menu</span>
             <kbd className="font-mono">{shortcut}</kbd>
           </button>
           <button

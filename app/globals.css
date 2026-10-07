@@ -131,7 +131,8 @@ body {
 
 @keyframes rise {
   from {
-    opacity: 0;
+    /* not 0: fully transparent text doesn't count as painted, which delays LCP */
+    opacity: 0.01;
     transform: translateY(14px);
     filter: blur(6px);
   }
