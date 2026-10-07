@@ -32,7 +32,7 @@ export function Contact() {
         />
 
         <div className="grid gap-10 lg:grid-cols-12">
-          <Reveal className="lg:col-span-5">
+          <Reveal className="min-w-0 lg:col-span-5">
             <ul className="space-y-3">
               {channels.map((c) => (
                 <li key={c.label}>
@@ -54,7 +54,7 @@ export function Contact() {
             <p className="mt-6 text-sm text-ink-3">Based in {site.location}.</p>
           </Reveal>
 
-          <Reveal className="lg:col-span-7" delay={100}>
+          <Reveal className="min-w-0 lg:col-span-7" delay={100}>
             {site.email ? (
               <ContactForm />
             ) : (

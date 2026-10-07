@@ -1,12 +1,13 @@
 import { Reveal } from "@/components/Reveal";
 import { SectionHeading } from "@/components/SectionHeading";
+import { sectionIndex } from "@/lib/nav";
 import { about } from "@/lib/site";
 
 export function About() {
   return (
     <section id="about" className="mx-auto max-w-6xl px-4 py-24 sm:px-6 md:py-32">
       <SectionHeading
-        index="01"
+        index={sectionIndex("about")}
         label="About"
         title={
           <>

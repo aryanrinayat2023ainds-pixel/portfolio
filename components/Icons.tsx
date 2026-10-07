@@ -85,6 +85,11 @@ export const FileText = (p: P) => (
     <path d="M14 3v5h5M9 13h6M9 17h6" />
   </svg>
 );
+export const Play = (p: P) => (
+  <svg {...base(p)}>
+    <path d="M7 4.5v15l12-7.5z" />
+  </svg>
+);
 export const Star = (p: P) => (
   <svg {...base(p)}>
     <path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9z" />

@@ -82,6 +82,15 @@ export function Hero({ hasResume }: { hasResume: boolean }) {
               </li>
             ))}
           </ul>
+
+          <ul className="rise mt-10 grid max-w-xl grid-cols-3 gap-4 border-t border-line pt-6" style={d(560)} aria-label="Highlights">
+            {hero.highlights.map((h) => (
+              <li key={h.label}>
+                <span className="block font-serif text-[clamp(1.9rem,4vw,2.6rem)] leading-none text-ink">{h.value}</span>
+                <span className="mt-2 block text-xs leading-snug text-ink-3">{h.label}</span>
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div className="rise h-[340px] sm:h-[400px] lg:col-span-5 lg:h-auto lg:min-h-[460px]" style={d(300)}>

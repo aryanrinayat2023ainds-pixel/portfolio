@@ -18,10 +18,10 @@ export default function Home() {
       <main id="main">
         <Hero hasResume={hasResume} />
         <About />
-        <Education />
-        <Skills />
         <Work />
         <Experience />
+        <Skills />
+        <Education />
         <Achievements />
         <Contact />
       </main>

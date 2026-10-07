@@ -1,12 +1,13 @@
 import { Reveal } from "@/components/Reveal";
 import { SectionHeading } from "@/components/SectionHeading";
+import { sectionIndex } from "@/lib/nav";
 import { education } from "@/lib/site";
 
 export function Education() {
   return (
     <section id="education" className="border-y border-line bg-bg-elev/40">
       <div className="mx-auto max-w-6xl px-4 py-24 sm:px-6 md:py-32">
-        <SectionHeading index="02" label="Education" title={<>Where I&apos;m learning</>} />
+        <SectionHeading index={sectionIndex("education")} label="Education" title={<>Where I&apos;m learning</>} />
 
         <ol className="relative ml-2 border-l border-line-strong sm:ml-3">
           {education.map((e, i) => (

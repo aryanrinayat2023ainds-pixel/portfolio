@@ -2,14 +2,14 @@ import { achievements, experience, projects, skills } from "./site";
 
 export type NavItem = { id: string; label: string };
 
-/** Sections without content are dropped, so the nav never points at an empty section. */
+/** Page order. Sections without content are dropped, so the nav never points at an empty section. */
 export const navItems: NavItem[] = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
-  { id: "education", label: "Education" },
-  skills.length ? { id: "skills", label: "Skills" } : null,
   { id: "work", label: projects.length ? "Projects" : "Work" },
   experience.length ? { id: "experience", label: "Experience" } : null,
+  skills.length ? { id: "skills", label: "Skills" } : null,
+  { id: "education", label: "Education" },
   achievements.length ? { id: "achievements", label: "Achievements" } : null,
   { id: "contact", label: "Contact" },
 ].filter((x): x is NavItem => x !== null);
