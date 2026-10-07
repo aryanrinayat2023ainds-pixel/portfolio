@@ -18,7 +18,7 @@ Almost everything lives in **`lib/site.ts`**:
 | Skills | `skills` — same (only list what you can discuss in an interview) |
 | Email / links | `site` |
 
-**Resume:** put your PDF at `public/resume.pdf`. The "Download Resume" button and command-menu action appear automatically on the next deploy.
+**Resume:** the source is `resume/resume.html` (one A4 page, ATS-friendly single column). Edit it, open it in Chrome/Edge, and *Print → Save as PDF* (A4, margins "Default") to `public/resume.pdf`. The public copy deliberately leaves out the phone number. Any PDF at `public/resume.pdf` works. The "Download Resume" button and command-menu action appear automatically on the next deploy.
 
 **GitHub repos** are fetched live from `github.com/aryanrinayat2023ainds-pixel` (set by `site.githubUser`), so new public repositories show up without editing anything.
 

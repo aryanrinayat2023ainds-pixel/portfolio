@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Aryan Rinayat — Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif&display=swap" rel="stylesheet" />
+<style>
+  /* Single-column, real text, no tables or images: parses cleanly in ATS systems. */
+  @page { size: A4; margin: 11mm 13mm 10mm; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Inter, Arial, sans-serif; font-size: 9.4pt; line-height: 1.4; color: #1b1d22; }
+  a { color: inherit; text-decoration: none; }
+  .accent { color: #b53d10; }
+
+  header { border-bottom: 1.5px solid #1b1d22; padding-bottom: 7pt; }
+  h1 { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; font-size: 27pt; line-height: 1; letter-spacing: -0.2pt; }
+  .tagline { margin-top: 4pt; font-size: 10.4pt; font-weight: 500; }
+  .contact { margin-top: 4pt; font-size: 8.9pt; color: #44474f; }
+  .contact span + span::before { content: "  ·  "; color: #9a9da6; white-space: pre; }
+
+  section { margin-top: 8pt; }
+  h2 { font-size: 8.4pt; font-weight: 700; letter-spacing: 1.3pt; text-transform: uppercase; color: #b53d10; border-bottom: 0.6pt solid #d6d3cc; padding-bottom: 2pt; margin-bottom: 5pt; }
+  .row { display: flex; justify-content: space-between; align-items: baseline; gap: 10pt; }
+  .title { font-weight: 600; font-size: 10pt; }
+  .meta { font-size: 8.8pt; color: #5b5f68; white-space: nowrap; }
+  .sub { font-size: 9pt; color: #44474f; }
+  .stack { margin-top: 1.5pt; font-size: 8.6pt; color: #44474f; }
+  .stack b { font-weight: 600; color: #1b1d22; }
+  ul { margin: 3pt 0 0 12pt; }
+  li { margin-top: 1.6pt; padding-left: 1pt; }
+  li::marker { color: #b53d10; }
+  .entry + .entry { margin-top: 6pt; }
+  .links { margin-top: 3pt; font-size: 8.6pt; color: #44474f; }
+  .links a { color: #b53d10; border-bottom: 0.5pt solid #e3b9a8; }
+  .skills { display: grid; grid-template-columns: 112pt 1fr; row-gap: 2pt; column-gap: 8pt; }
+  .skills dt { font-weight: 600; }
+  .plain { list-style: none; margin-left: 0; }
+  .plain li { padding-left: 0; }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Aryan Rinayat</h1>
+    <p class="tagline">AI &amp; Data Science Undergraduate · Backend &amp; Applied AI</p>
+    <p class="contact">
+      <span>Pune, Maharashtra, India</span>
+      <!--PHONE-->
+      <span><a href="mailto:aryanrinayat2023.ainds@mmcoe.edu.in">aryanrinayat2023.ainds@mmcoe.edu.in</a></span>
+      <span><a href="https://aryan-rinayat.vercel.app">aryan-rinayat.vercel.app</a></span>
+      <span><a href="https://www.linkedin.com/in/aryanrinayat/">linkedin.com/in/aryanrinayat</a></span>
+      <span><a href="https://github.com/aryanrinayat2023ainds-pixel">github.com/aryanrinayat2023ainds-pixel</a></span>
+    </p>
+  </header>
+
+  <section>
+    <h2>Summary</h2>
+    <p>
+      Third-year B.E. Artificial Intelligence &amp; Data Science student at MMCOE, Pune. Built the backend of
+      <b>Sahyog</b>, a multilingual, voice-first civic grievance platform, for Smart India Hackathon 2026, and completed a
+      six-month AI &amp; Data Science internship at Techkisan Automation. Interested in data analytics, machine learning
+      and speech &amp; language AI; seeking internships where I can build and ship.
+    </p>
+  </section>
+
+  <section>
+    <h2>Education</h2>
+    <div class="row">
+      <span class="title">Marathwada Mitra Mandal's College of Engineering (MMCOE), Pune</span>
+      <span class="meta">Expected 2028</span>
+    </div>
+    <p class="sub">Bachelor of Engineering, Artificial Intelligence &amp; Data Science · Savitribai Phule Pune University (SPPU)</p>
+  </section>
+
+  <section>
+    <h2>Projects</h2>
+    <div class="entry">
+      <div class="row">
+        <span class="title">Sahyog — Multilingual Civic Grievance Platform</span>
+        <span class="meta">Smart India Hackathon 2026 · Team Toofan+</span>
+      </div>
+      <p class="stack"><b>Stack:</b> Python, FastAPI, PostgreSQL, PostGIS, pgvector, Ollama, faster-whisper, Bhashini, Docker, MinIO, Next.js, pytest</p>
+      <ul>
+        <li>Built the backend for a platform that lets rural citizens in Jharkhand report civic problems by <b>voice, text or photo</b> in their own language (problem statement 26043, Smart Education).</li>
+        <li>Designed a pipeline of <b>nine Python/FastAPI services</b> — language normalisation, evidence extraction, triage, dispatch, a university-research track, industry partnerships, lifecycle tracking and a transparency layer.</li>
+        <li>Integrated <b>Bhashini</b> for speech-to-text, translation and spoken replies, and self-hosted <b>Meta MMS, NLLB-200 and Indic Parler-TTS</b> to add Santali, which Bhashini does not cover — 8 languages supported in total.</li>
+        <li>Used a local LLM via <b>Ollama</b> to structure text reports and classify photos, with embedding-based duplicate detection, spam and priority checks, and a <b>human validation gate</b> before any ticket is raised.</li>
+        <li>Built <b>“Ask Sahyog”</b>, a retrieval-augmented Q&amp;A over pgvector that answers how the system works and whether an issue is already tracked, and added Docker support and object storage across the services.</li>
+      </ul>
+      <p class="links">
+        <a href="https://prismatic-chebakia-3bfad9.netlify.app/">Live demo</a> ·
+        <a href="https://youtu.be/KHkfO09CqQo">Video walkthrough</a> ·
+        <a href="https://github.com/omdchoudhari33-beep/Sahyog_SIH-2026">Source code</a>
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Experience</h2>
+    <div class="entry">
+      <div class="row">
+        <span class="title">AI &amp; Data Science Intern — Techkisan Automation, Gondia</span>
+        <span class="meta">6 months · completed Jan 2026 · Hybrid</span>
+      </div>
+      <ul>
+        <li>Learned AI and automation concepts under the guidance of the firm's senior executives.</li>
+        <li>Assisted with project documentation and collaborated with the team on projects; described in the completion certificate as “diligent, hardworking and inquisitive”.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Technical Skills</h2>
+    <dl class="skills">
+      <dt>Programming &amp; data</dt><dd>Python, SQL, data analysis, Microsoft Excel</dd>
+      <dt>AI &amp; ML</dt><dd>Machine learning fundamentals, LLMs (Ollama), retrieval-augmented generation, speech-to-text (faster-whisper), Bhashini APIs</dd>
+      <dt>Backend &amp; data stores</dt><dd>FastAPI, PostgreSQL, PostGIS, pgvector, MinIO, Docker</dd>
+      <dt>Web &amp; tools</dt><dd>Next.js, Tailwind CSS, Git &amp; GitHub, pytest</dd>
+      <dt>Languages</dt><dd>English, Hindi, Marathi</dd>
+    </dl>
+  </section>
+
+  <section>
+    <h2>Leadership &amp; Activities</h2>
+    <ul>
+      <li><b>Marketing, Activity Planner Committee</b> — AESA (AI &amp; DS Engineering Student Association), MMCOE · 2024–25</li>
+      <li><b>HR Coordinator</b> — Forengers Foundation</li>
+      <li><b>Design Head</b> — MicDrop Club</li>
+      <li><b>Volunteer</b> — National Service Scheme (NSS)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Certifications &amp; Writing</h2>
+    <ul>
+      <li>AI &amp; Data Science Internship Certificate — Techkisan Automation (Jan 2026)</li>
+      <li>NSS Participation Certificate — National Service Scheme</li>
+      <li>“Convinced, Not Hacked” — essay on social engineering and online financial fraud in India ·
+        <a class="accent" href="https://aryan-rinayat.vercel.app/writing/convinced-not-hacked">read online</a></li>
+    </ul>
+  </section>
+
+</body>
+</html>
