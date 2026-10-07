@@ -22,9 +22,9 @@ export const site = {
 
   links: {
     linkedin: "https://www.linkedin.com/in/aryanrinayat/",
-    github: "https://github.com/Aryanrinayat",
+    github: "https://github.com/aryanrinayat2023ainds-pixel",
   },
-  githubUser: "Aryanrinayat",
+  githubUser: "aryanrinayat2023ainds-pixel",
 
   // Drop a file at public/resume.pdf and the "Download Resume" button appears automatically.
   resumePath: "/resume.pdf",

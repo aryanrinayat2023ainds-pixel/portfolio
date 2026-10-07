@@ -20,7 +20,7 @@ Almost everything lives in **`lib/site.ts`**:
 
 **Resume:** put your PDF at `public/resume.pdf`. The "Download Resume" button and command-menu action appear automatically on the next deploy.
 
-**GitHub repos** are fetched live from `github.com/Aryanrinayat`, so new public repositories show up without editing anything.
+**GitHub repos** are fetched live from `github.com/aryanrinayat2023ainds-pixel` (set by `site.githubUser`), so new public repositories show up without editing anything.
 
 **Writing:** essays live in `lib/essays/` with a page under `app/writing/<slug>/`.
 
