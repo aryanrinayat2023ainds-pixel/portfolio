@@ -25,15 +25,23 @@ export function GitHubRepos() {
   useEffect(() => {
     let cancelled = false;
     // GitHub sends cache headers, so repeat visits are served from the browser's HTTP cache.
-    fetch(`https://api.github.com/users/${site.githubUser}/repos?sort=pushed&per_page=12`, {
-      headers: { Accept: "application/vnd.github+json" },
-    })
-      .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
-      .then((all: Repo[]) => {
-        const repos = all.filter((r) => !r.fork).slice(0, 6);
-        if (!cancelled) setState({ status: "ok", repos });
-      })
-      .catch(() => !cancelled && setState({ status: "error" }));
+    const load = (user: string) =>
+      fetch(`https://api.github.com/users/${user}/repos?sort=pushed&per_page=12`, {
+        headers: { Accept: "application/vnd.github+json" },
+      }).then((r) => (r.ok ? (r.json() as Promise<Repo[]>) : Promise.reject(r.status)));
+
+    // One account being unreachable shouldn't hide the other's repos.
+    Promise.allSettled(site.githubUsers.map(load)).then((results) => {
+      if (cancelled) return;
+      const ok = results.filter((r): r is PromiseFulfilledResult<Repo[]> => r.status === "fulfilled");
+      if (!ok.length) return setState({ status: "error" });
+      const repos = ok
+        .flatMap((r) => r.value)
+        .filter((r) => !r.fork)
+        .sort((a, b) => b.pushed_at.localeCompare(a.pushed_at))
+        .slice(0, 6);
+      setState({ status: "ok", repos });
+    });
     return () => {
       cancelled = true;
     };
@@ -45,15 +53,20 @@ export function GitHubRepos() {
         <p className="label">From GitHub · live</p>
         <h3 className="mt-2 text-xl font-medium text-ink">Code &amp; repositories</h3>
       </div>
-      <a
-        href={site.links.github}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 text-sm text-ink-2 transition-colors hover:text-accent"
-      >
-        <GitHub width={16} height={16} /> @{site.githubUser}
-        <ArrowUpRight width={14} height={14} />
-      </a>
+      <div className="flex flex-wrap gap-x-5 gap-y-2">
+        {site.githubUsers.map((u) => (
+          <a
+            key={u}
+            href={`https://github.com/${u}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm text-ink-2 transition-colors hover:text-accent"
+          >
+            <GitHub width={16} height={16} /> @{u}
+            <ArrowUpRight width={14} height={14} />
+          </a>
+        ))}
+      </div>
     </div>
   );
 

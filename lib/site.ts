@@ -26,8 +26,11 @@ export const site = {
   links: {
     linkedin: "https://www.linkedin.com/in/aryanrinayat/",
     github: "https://github.com/aryanrinayat2023ainds-pixel",
+    github2: "https://github.com/Aryanrinayat",
   },
   githubUser: "aryanrinayat2023ainds-pixel",
+  // Every account whose public repos appear in the live "Code & repositories" list.
+  githubUsers: ["aryanrinayat2023ainds-pixel", "Aryanrinayat"],
 
   // Drop a file at public/resume.pdf and the "Download Resume" button appears automatically.
   resumePath: "/resume.pdf",
@@ -147,6 +150,9 @@ export type Project = {
   github?: string;
   demo?: string;
   video?: string;
+  image?: { src: string; alt: string };
+  /** Team project: the contribution block reads "How we built it" instead of "What I built". */
+  team?: boolean;
 };
 
 export const projects: Project[] = [
@@ -170,6 +176,28 @@ export const projects: Project[] = [
     github: "https://github.com/omdchoudhari33-beep/Sahyog_SIH-2026",
     demo: "https://prismatic-chebakia-3bfad9.netlify.app/",
     video: "https://youtu.be/KHkfO09CqQo",
+  },
+  {
+    // Source: PBL report "IOT Based Plant Emotion Detection", SE AI&DS, MMCOE 2024–25 Sem II
+    name: "IoT Plant Emotion Detection",
+    context: "Project Based Learning · SE AI & DS, MMCOE · 2024–25 · Team of 4",
+    description:
+      "An Arduino system that turns sensor readings into a plant's “mood”. It watches soil moisture, temperature and humidity in real time, sounds a buzzer when the plant is thirsty, and switches itself off once it has been watered.",
+    problem: "Plants can't say when they need water, so busy owners notice only after the damage — wilting, stress or root rot — is done.",
+    contribution:
+      "Team project with Sneha Chandane, Snehal Devkar and Tanukumari Singh, guided by Mrs. Ketki Katre. Together we wired the sensors to an Arduino Uno, calibrated a dry-soil threshold, and mapped readings to plain-language moods on the Serial Monitor.",
+    features: [
+      "Live soil-moisture, temperature and humidity readings",
+      "Buzzer alert below a calibrated moisture threshold that turns off automatically after watering",
+      "Readable status messages like “Happy — feeling just right” in the Serial Monitor",
+      "Fully offline and low-cost, built from off-the-shelf parts",
+    ],
+    tech: ["Arduino Uno", "Arduino C/C++", "Soil moisture sensor", "DHT11", "IoT"],
+    team: true,
+    image: {
+      src: "/projects/plant-emotion-hardware.jpg",
+      alt: "The prototype: an Arduino Uno wired to a DHT11 sensor and soil-moisture module on a wooden mount",
+    },
   },
 ];
 
@@ -206,7 +234,10 @@ export const experience: Experience[] = [
     organization: "AESA, MMCOE",
     role: "Marketing — Activity Planner Committee",
     period: "2024–25",
-    points: ["Marketed events for the AI & DS student association, which runs workshops, hackathons and industry-exposure sessions."],
+    points: [
+      "Marketed events for the AI & DS student association, which runs workshops, hackathons and industry-exposure sessions.",
+      "Part of the organising team for Dexterity 2K24-25, the department's national-level technical event (15 Oct 2024), recognised with a certificate of appreciation.",
+    ],
     proof: {
       label: "Listed on MMCOE's site",
       href: "https://mmcoe.edu.in/departments/ai-ds/professional-associations/students-association/",
@@ -240,6 +271,13 @@ export const achievements: Achievement[] = [
     date: "Jan 2026",
     url: "/certificates/techkisan-internship-certificate.pdf",
   },
+  {
+    kind: "Leadership",
+    title: "Certificate of Appreciation — Organising Dexterity 2K24-25",
+    issuer: "Dept. of AI & DS, MMCOE · national-level technical event",
+    date: "Oct 2024",
+    url: "/certificates/dexterity-2k24-25-certificate.pdf",
+  },
   { kind: "Certification", title: "NSS Participation Certificate", issuer: "National Service Scheme" },
   { kind: "Publication", title: "Convinced, Not Hacked", issuer: "Essay on online financial fraud in India", url: "/writing/convinced-not-hacked" },
 ];
@@ -252,6 +290,7 @@ export const skills: SkillGroup[] = [
   { group: "AI & ML", items: ["Machine learning fundamentals", "LLMs with Ollama", "RAG", "Speech-to-text (faster-whisper)", "Bhashini APIs"] },
   { group: "Backend & data stores", items: ["FastAPI", "PostgreSQL", "PostGIS", "pgvector", "MinIO", "Docker"] },
   { group: "Web & tools", items: ["Next.js", "Tailwind CSS", "Git & GitHub", "pytest"] },
+  { group: "IoT & hardware", items: ["Arduino Uno", "Arduino IDE", "DHT11 & soil-moisture sensors"] },
   { group: "Working style", items: ["Communication", "Leadership", "Teamwork", "Time management", "Adaptability"] },
   { group: "Languages", items: ["English", "Hindi", "Marathi"] },
 ];

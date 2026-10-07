@@ -9,7 +9,7 @@ export function Contact() {
   const channels = [
     site.email ? { href: `mailto:${site.email}`, label: "Email", value: site.email, icon: <Mail /> } : null,
     { href: site.links.linkedin, label: "LinkedIn", value: "in/aryanrinayat", icon: <LinkedIn /> },
-    { href: site.links.github, label: "GitHub", value: `@${site.githubUser}`, icon: <GitHub /> },
+    ...site.githubUsers.map((u) => ({ href: `https://github.com/${u}`, label: "GitHub", value: `@${u}`, icon: <GitHub /> })),
   ].filter((c) => c !== null);
 
   return (

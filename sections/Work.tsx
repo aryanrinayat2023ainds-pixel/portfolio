@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { GitHubRepos } from "@/components/GitHubRepos";
 import { ArrowRight, ArrowUpRight, Download, GitHub, Play } from "@/components/Icons";
@@ -35,7 +36,7 @@ function PipelineFlow({ steps }: { steps: string[] }) {
   );
 }
 
-function ProjectCard({ p, i, featured }: { p: Project; i: number; featured: boolean }) {
+function ProjectCard({ p, i, featured, wide }: { p: Project; i: number; featured: boolean; wide: boolean }) {
   const links = (
     <div className="flex flex-wrap gap-2">
       {p.demo && (
@@ -67,10 +68,21 @@ function ProjectCard({ p, i, featured }: { p: Project; i: number; featured: bool
   );
 
   return (
-    <Reveal as="li" delay={i * 70} className={`h-full ${featured ? "md:col-span-2" : ""}`}>
+    <Reveal as="li" delay={i * 70} className={`h-full ${featured || wide ? "md:col-span-2" : ""}`}>
       <article className="card group h-full overflow-hidden transition-[border-color] duration-300 hover:border-line-strong">
-        <div className={featured ? "grid lg:grid-cols-12" : "flex h-full flex-col"}>
-          <div className={`p-6 sm:p-9 ${featured ? "lg:col-span-7" : "flex flex-1 flex-col"}`}>
+        <div className={featured || (wide && p.image) ? "grid lg:grid-cols-12" : "flex h-full flex-col"}>
+          {!featured && p.image && (
+            <figure className={`relative overflow-hidden border-line bg-bg ${wide ? "aspect-[4/3] border-b lg:order-2 lg:col-span-5 lg:aspect-auto lg:border-b-0 lg:border-l" : "aspect-[16/10] border-b"}`}>
+              <Image
+                src={p.image.src}
+                alt={p.image.alt}
+                fill
+                sizes="(min-width: 1024px) 460px, 100vw"
+                className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+              />
+            </figure>
+          )}
+          <div className={`p-6 sm:p-9 ${featured ? "lg:col-span-7" : wide && p.image ? "flex flex-col lg:col-span-7" : "flex flex-1 flex-col"}`}>
             <p className="label flex flex-wrap gap-x-3 gap-y-1">
               <span className="text-accent">{featured ? "Featured project" : `Project ${String(i + 1).padStart(2, "0")}`}</span>
               {p.context && <span>{p.context}</span>}
@@ -86,7 +98,7 @@ function ProjectCard({ p, i, featured }: { p: Project; i: number; featured: bool
             )}
             {p.contribution && (
               <div className="mt-4 border-l-2 border-accent pl-4">
-                <p className="label text-accent">What I built</p>
+                <p className="label text-accent">{p.team ? "How we built it" : "What I built"}</p>
                 <p className="mt-1.5 leading-relaxed text-ink">{p.contribution}</p>
               </div>
             )}
@@ -170,7 +182,10 @@ export function Work() {
       {projects.length > 0 && (
         <ul className="mb-16 grid gap-5 md:grid-cols-2">
           {projects.map((p, i) => (
-            <ProjectCard key={p.name} p={p} i={i} featured={i === 0 && projects.length % 2 === 1} />
+            <ProjectCard key={p.name} p={p} i={i} featured={i === 0}
+              // after the featured card, a trailing project with no partner spans the full row
+              wide={i > 0 && i === projects.length - 1 && (projects.length - 1) % 2 === 1}
+            />
           ))}
         </ul>
       )}

@@ -70,7 +70,7 @@ const personJsonLd = {
     "@type": "CollegeOrUniversity",
     name: "Marathwada Mitra Mandal College of Engineering",
   },
-  sameAs: [site.links.linkedin, site.links.github],
+  sameAs: [site.links.linkedin, site.links.github, site.links.github2],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

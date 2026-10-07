@@ -66,7 +66,7 @@ export function CommandPalette({ base = "", hasResume }: { base?: string; hasRes
     }
     list.push(
       { id: "linkedin", label: "Open LinkedIn", hint: "External", icon: <LinkedIn width={16} height={16} />, run: external(site.links.linkedin) },
-      { id: "github", label: "Open GitHub", hint: "External", icon: <GitHub width={16} height={16} />, run: external(site.links.github) },
+      ...site.githubUsers.map((u) => ({ id: `github-${u}`, label: `Open GitHub @${u}`, hint: "External", icon: <GitHub width={16} height={16} />, run: external(`https://github.com/${u}`) })),
       { id: "theme", label: "Toggle light / dark theme", hint: "Appearance", icon: <Moon width={16} height={16} />, run: toggleTheme },
     );
     return list;
